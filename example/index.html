@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MVVM</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="dsx">
+        <input type="text" v-model="child.dsx">
+        <p>{{getWeChatblog}}</p>
+        <button v-on:click="clickBtn">改变child</button>
+    </div>
+
+    <script src="../dist/debug/vue-dsx.js"></script>
+    <script>
+        var vm = new Vues({
+            el: '#app',
+            data: {
+                dsx: 'web前端开发 ',
+                child: {
+                    dsx: '大师兄'
+                }
+            },
+
+            computed: {
+                getWeChatblog: function () {
+                    return this.dsx+ this.child.dsx;
+                }
+            },
+
+            methods: {
+                clickBtn: function (e) {
+                    this.child.dsx='My World !  Dsx' ;
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
